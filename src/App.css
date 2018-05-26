@@ -1,14 +1,88 @@
 .App {
-  text-align: center;
-  margin: 0 auto;
+    text-align: center;
+    margin: 0 auto;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
 }
 
 .main-icon {
-  width: 80px;
-  height: 80px;
-  font-size: 4em;
-  padding: 30px;
-  border: 8px solid black;
-  border-radius: 100%;
-  text-align: center;
+    font-size: 8em;
+    border-radius: 50%;
+    padding: 20px;
+    margin: 40px 0 20px 0;
+}
+
+.navbar {
+    margin: 0 -30px;
+    color: black;
+}
+
+.container {
+    text-align: center;
+    background: skyblue;
+    color: white;
+}
+
+.input-group input,
+.input-group button {
+    border-radius: 40px;
+}
+
+.navbar-brand img {
+    height: 60px;
+    width: 60px;
+}
+
+.navbar-brand {
+    padding: 0px;
+}
+
+.boiling {
+    background: rgb(158, 43, 14);
+}
+
+.hot {
+    background: rgb(198, 106, 44);
+}
+
+.warm {
+    background: rgb(242, 190, 117);
+}
+
+.perfect {
+    background: rgb(186, 203, 161);
+}
+
+.cool {
+    background: rgb(87, 143, 161);
+}
+
+.freezing {
+    background: rgb(31, 75, 153);
+}
+
+.boiling-forecast {
+    background: rgb(240, 121, 91);
+}
+
+.hot-forecast {
+    background: rgb(223, 155, 109);
+}
+
+.warm-forecast {
+    background: rgb(244, 200, 138);
+}
+
+.perfect-forecast {
+    background: rgb(195, 210, 173);
+}
+
+.cool-forecast {
+    background: rgb(139, 179, 192);
+}
+
+.freezing-forecast {
+    background: rgb(149, 179, 234);
 }
