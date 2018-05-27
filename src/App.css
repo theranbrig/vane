@@ -145,3 +145,21 @@ body {
 .location-button {
     min-width: 25% !important;
 }
+
+.cell-data {
+    text-align: right !important;
+}
+
+.weather-details {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+.weather-details>tbody>tr>td {
+    color: whitesmoke !important;
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+.whole-details-area {
+    padding: 20px 2% 50px;
+}

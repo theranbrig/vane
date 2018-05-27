@@ -48,6 +48,7 @@ class App extends Component {
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     this.apiRequest();
   }
 
@@ -67,8 +68,13 @@ class App extends Component {
         iconId: conditions.item.condition.code,
         description: conditions.item.condition.text,
         humidity: conditions.atmosphere.humidity,
-        time: conditions.lastBuildDate,
-        forecast: conditions.item.forecast
+        time: conditions.item.forecast[0].date,
+        forecast: conditions.item.forecast,
+        high: conditions.item.forecast[0].high,
+        low: conditions.item.forecast[0].low,
+        sunrise: conditions.astronomy.sunrise,
+        sunset: conditions.astronomy.sunset,
+        windspeed: `${conditions.wind.speed} ${conditions.units.speed}`
       })
   });
     this.setState({
@@ -139,7 +145,8 @@ class App extends Component {
               }}
             >
               <div>
-                <MenuItem>
+                <form>
+                  <MenuItem>
                     <TextField 
                       placeholder='Search Location' 
                       type='text' 
@@ -147,13 +154,15 @@ class App extends Component {
                       value={this.state.activeCity}
                       label="Search Location"
                     />
-                    <Button 
-                      onClick={this.handleSubmit} 
-                      addonType="append"
-                      className='location-button'>
+                    <Button
+                      type='submit'
+                      onClick={ this.handleSubmit } 
+                      className='location-button'
+                    >
                       <i className="fas fa-search"></i>
                     </Button>
-                </MenuItem>
+                  </MenuItem>
+                </form>
               </div>
                 <User 
                   firebase={ firebase }
@@ -173,8 +182,6 @@ class App extends Component {
                 temp={this.state.temp}
                 iconId={this.state.iconId}
                 description={this.state.description}
-                time={this.state.time}
-                humidity={this.state.humidity}
               />
             </Col>
           </Row>
@@ -182,7 +189,15 @@ class App extends Component {
             forecast={this.state.forecast}
             tempClass={this.setTemperatureClass()}
           />
-          <DetailedInfo/>
+          <DetailedInfo
+            high={this.state.high}
+            low={this.state.low}
+            sunrise={this.state.sunrise}
+            sunset={this.state.sunset}
+            windspeed={this.state.windspeed}
+            humidity={this.state.humidity}
+            time={this.state.time}
+          />
         </Grid>
       </Grid>
     );

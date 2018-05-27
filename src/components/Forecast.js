@@ -17,7 +17,7 @@ class Forecast extends Component {
     return (
       <div className={`forecast ${this.setForcastClass()}`}>
         <div className='horiz-menu'>
-          <Toolbar position="static">
+          <Toolbar>
             <Tabs
               scrollable
               scrollButtons="auto"
@@ -36,7 +36,6 @@ class Forecast extends Component {
           </Toolbar>
         </div>
       </div>
-      
     );
   }
 }
