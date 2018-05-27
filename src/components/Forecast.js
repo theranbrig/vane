@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import { ListItem, Toolbar, Tabs } from "@material-ui/core";
 
 class Forecast extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tempClass: ''
+      tempClass: '',
     }
   }
-  
-  
+
   setForcastClass() {
     return `${this.props.tempClass}-forecast`
   }
@@ -16,21 +16,27 @@ class Forecast extends Component {
   render() {
     return (
       <div className={`forecast ${this.setForcastClass()}`}>
-        <h2>Forecast Goes Here!</h2>
-        <ul>
-          {
-            this.props.forecast.map( (day, index) => 
-              <div key={index}>
-                <p>{day.day} - {day.date}</p>
-                <i className={`wi wi-yahoo-${day.code}`}></i>
-                <p>{day.text}</p>
-                <p>Hi - {day.high}&#8457; Lo - {day.low}&#8457;</p>
-                <br/>
-              </div>
-            )
-          }
-        </ul>
+        <div className='horiz-menu'>
+          <Toolbar position="static">
+            <Tabs
+              scrollable
+              scrollButtons="auto"
+              className='forecast-area'
+            >
+              {
+                this.props.forecast.map( (day, index) => 
+                  <ListItem key={index} className='forecast-cell'>
+                    <h5>{day.day}</h5>
+                    <i className={`wi wi-yahoo-${day.code}`}></i>
+                    <p>H <strong className='temp-text'>{day.high}&deg;</strong> - L <strong className='temp-text'>{day.low}&deg;</strong></p>
+                  </ListItem>
+                )
+              }
+            </Tabs>
+          </Toolbar>
+        </div>
       </div>
+      
     );
   }
 }
