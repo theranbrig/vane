@@ -10,6 +10,7 @@ body {
     width: 100%;
 }
 
+/* Current Weather Styling */
 .main-icon,
 .big-data h2 {
     font-size: 6em;
