@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import mainLogo from "./assets/Untitled-1.png";
 import './App.css';
+import mainLogo from "./assets/Untitled-1.png";
 import * as firebase from 'firebase';
 import User from './components/User'
 import axios from "axios";
+import DetailedInfo from "./components/DetailedInfo";
 import Forecast from './components/Forecast'
 import SavedCities from "./components/SavedCities";
 import CurrentWeather from "./components/CurrentWeather";
-import { InputGroup, InputGroupAddon, Button, Input, Container, Collapse, Col, Row, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu } from "reactstrap";
+import { Button, TextField, Grid, Toolbar, Menu, MenuItem, IconButton } from "@material-ui/core";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { Row, Col } from "reactstrap";
 
 
-var config = {
+const config = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
     databaseURL: process.env.REACT_APP_DATABASE_URL,
@@ -20,17 +23,19 @@ var config = {
   };
   firebase.initializeApp(config);
 
+const ITEM_HEIGHT = 45;
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activeCity: 'London',
       user: null,
-      forecast: []
+      forecast: [],
+      anchorEl: null
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggle = this.toggle.bind(this);
   }
   
   // App city search bar functions
@@ -67,10 +72,10 @@ class App extends Component {
       })
   });
     this.setState({
-      activeCity: ''
+      activeCity: '',
+      anchorEl: null
     })
   }
-
 
   setUser(user) {
     this.setState({
@@ -94,48 +99,73 @@ class App extends Component {
     }
   }
 
-  // Menubar toggle
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+  // Menu Open and Close
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
 
   tempClass() {}
   render() {
+    const { anchorEl } = this.state;
     return (
-      <Container className={this.setTemperatureClass()} id='main'>
-        <Col>
-        <Navbar className={this.setTemperatureClass()} light expand="md">
-          <NavbarBrand>
-            <img src={mainLogo} alt='main logo'/>
-          </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} className='main-logo'/>
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <InputGroup>
-                  <Input placeholder='Search Location' type='text' onChange={this.handleChange} value={this.state.activeCity}/>
-                  <InputGroupAddon onClick={this.handleSubmit} addonType="append"><Button outline color="secondary"><i className="fas fa-search"></i></Button></InputGroupAddon>
-                </InputGroup>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Menu
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <SavedCities/>
-                  <User 
-                    firebase={ firebase }
-                    setUser={this.setUser.bind(this)}
-                    user={this.state.user}
-                    currentUser={ this.state.user === null ? 'Guest' : this.state.user.displayName }
-                  />
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-        </Navbar>
+      <Grid container justify='center' alignItems='center' className={this.setTemperatureClass()} id='main'>
+        <Grid item xs={12} md={8}>
+        {/* <AppBar className={this.setTemperatureClass()}> */}
+          <Toolbar className='menu'>
+            <IconButton
+              aria-owns={anchorEl ? 'simple-menu' : null}
+              onClick={this.handleClick}
+              aria-label="More"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <MoreVertIcon />
+            </IconButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={this.handleClose}
+              PaperProps={{
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5,
+                  width: 200,
+                },
+              }}
+            >
+              <div>
+                <MenuItem>
+                    <TextField 
+                      placeholder='Search Location' 
+                      type='text' 
+                      onChange={this.handleChange} 
+                      value={this.state.activeCity}
+                      label="Search Location"
+                    />
+                    <Button 
+                      onClick={this.handleSubmit} 
+                      addonType="append"
+                      className='location-button'>
+                      <i className="fas fa-search"></i>
+                    </Button>
+                </MenuItem>
+              </div>
+                <User 
+                  firebase={ firebase }
+                  setUser={this.setUser.bind(this)}
+                  user={this.state.user}
+                  currentUser={ this.state.user === null ? 'Guest' : this.state.user.displayName }
+                />
+              <SavedCities/>
+            </Menu>
+            <img src={mainLogo} alt='main logo' className='app-bar-logo'/>
+          </Toolbar>
+        {/* </AppBar> */}
           <Row>
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <CurrentWeather 
@@ -152,8 +182,9 @@ class App extends Component {
             forecast={this.state.forecast}
             tempClass={this.setTemperatureClass()}
           />
-        </Col>
-      </Container>
+          <DetailedInfo/>
+        </Grid>
+      </Grid>
     );
   }
 }

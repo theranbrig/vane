@@ -5,39 +5,40 @@
 
 body {
     font-family: 'Raleway', sans-serif;
+    color: whitesmoke;
+    text-align: center;
+    width: 100%;
 }
 
-.main-icon {
-    font-size: 8em;
+.main-icon,
+.big-data h2 {
+    font-size: 6em;
     border-radius: 50%;
     padding: 20px;
-    margin: 40px 0 20px 0;
+    margin: 20px 0 20px 0;
+    display: inline-block;
 }
 
-.navbar {
-    margin: 0 -30px;
-    color: black;
+.big-data h2 {
+    border-left: 1px solid white;
+    border-radius: 0;
 }
 
-.container {
-    text-align: center;
-    background: skyblue;
-    color: white;
+.big-data h2,
+.main-city,
+.main-description {
+    font-weight: 100;
 }
 
-.input-group input,
-.input-group button {
-    border-radius: 40px;
+.main-description {
+    font-size: 2.5em;
 }
 
-.navbar-brand img {
-    height: 60px;
-    width: 60px;
+.main-city {
+    font-size: 2em;
 }
 
-.navbar-brand {
-    padding: 0px;
-}
+/* Color Styling Main Section */
 
 .boiling {
     background: rgb(158, 43, 14);
@@ -63,6 +64,8 @@ body {
     background: rgb(31, 75, 153);
 }
 
+/* Color Styling Forecast Section */
+
 .boiling-forecast {
     background: rgb(240, 121, 91);
 }
@@ -76,7 +79,7 @@ body {
 }
 
 .perfect-forecast {
-    background: rgb(195, 210, 173);
+    background: rgba(195, 210, 178, 0.85);
 }
 
 .cool-forecast {
@@ -85,4 +88,60 @@ body {
 
 .freezing-forecast {
     background: rgb(149, 179, 234);
+}
+
+/* Forecast Area Styling */
+
+.horiz-menu {
+    height: 150px;
+    margin: 0 auto;
+}
+
+.forecast-cell {
+    height: 150px;
+    display: block !important;
+    padding: 4 10px !important;
+    text-align: center !important;
+}
+
+.forecast-area {
+    width: 100%;
+}
+
+.forecast-cell>i {
+    font-size: 3em;
+    padding: 15px 0;
+}
+
+.forecast-cell>p {
+    font-size: 0.7em;
+    margin: 0;
+}
+
+.temp-text {
+    font-size: 1.5em;
+}
+
+.forecast-cell h5 {
+    display: block;
+    margin: 0;
+}
+
+/* Menu Bar Styling */
+
+.app-bar-logo {
+    width: 45px;
+    height: 30px;
+    margin-left: -5px;
+}
+
+.menu {
+    padding: 0 !important;
+    font-family: 'Raleway', sans-serif !important;
+}
+
+/* Menu Font */
+
+.location-button {
+    min-width: 25% !important;
 }

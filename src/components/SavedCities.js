@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import { DropdownItem } from "reactstrap";
+import { MenuItem } from "@material-ui/core";
 
 class SavedCities extends Component {
   render() {
     return (
       <div>
-        <DropdownItem>
+        <MenuItem>
           Phuket
-        </DropdownItem>
-        <DropdownItem>
+        </MenuItem>
+        <MenuItem>
           Rome
-        </DropdownItem>
-        <DropdownItem>
+        </MenuItem>
+        <MenuItem>
           Chicago
-        </DropdownItem>
+        </MenuItem>
       </div>
     );
   }

@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class User extends Component {
 
@@ -29,9 +30,15 @@ class User extends Component {
   render() {
     return (
       <div>
-        <h4>{this.props.currentUser}</h4>
-        <button onClick={this.signIn.bind(this)}>Sign In</button>
-        <button onClick={this.signOut.bind(this)}>Sign Out</button>
+        <MenuItem>{this.props.currentUser}</MenuItem>
+        { this.props.user === null ? (
+          <MenuItem onClick={this.signIn.bind(this)}>Sign In</MenuItem>
+        ) : (
+          <MenuItem onClick={this.signOut.bind(this)}>Sign Out</MenuItem>
+        )
+        }
+        
+        
       </div>
     )
   }
