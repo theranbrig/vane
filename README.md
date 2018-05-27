@@ -1,6 +1,6 @@
 # REACT WEATHER APP
 
-![Imgur](https://i.imgur.com/VVy7dlX.png?2)
+![Imgur](https://i.imgur.com/4h8vHuO.png?1))
 
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/5tDfZos"><a href="//imgur.com/5tDfZos">Other Weather App Screen Shots - Full Color Palette</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
