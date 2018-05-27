@@ -10,7 +10,6 @@ class CurrentWeather extends Component {
         </div>
         <h2 className='main-description'>{this.props.description}</h2>
         <h1 className='main-city'>{this.props.city}</h1>
-        
       </div>
     )
   }
