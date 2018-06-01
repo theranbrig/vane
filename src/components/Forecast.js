@@ -9,13 +9,13 @@ class Forecast extends Component {
     }
   }
 
-  setForcastClass() {
+  setForecastClass() {
     return `${this.props.tempClass}-forecast`
   }
 
   render() {
     return (
-      <div className={`forecast ${this.setForcastClass()}`}>
+      <div className={`forecast ${this.setForecastClass()}`}>
         <div className='horiz-menu'>
           <Toolbar>
             <Tabs

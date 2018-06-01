@@ -12,7 +12,6 @@ This quick and simple mobile app was built in order to solidify my foundation fo
 
 This was first built by fetching data from the Yahoo Weather API and using Axios to handle the API requests.  Axios ensured that I can handle my API requests with each search that is performed, without further complicating my app life cycle.  Components were then rendered out using ReactJS and Material UI.  Material UI was used to help with a responsive UX and UI, and helped to maintain styling.  I also added styling that that uses a color palette based on the temperature from hot to cold.  Screenshots of the color palette in the app can be found [here](https://imgur.com/a/5tDfZos).  Finally I have added Firebase in to allow for user authentication via Google.  This is still a work in progress as I plan on adding further functionality in the future.
 
-
 ## Running Locally
 
 Make sure you have [Node.js](http://nodejs.org/) installed.

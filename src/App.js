@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import mainLogo from "./assets/Untitled-1.png";
 import * as firebase from 'firebase';
-import User from './components/User'
 import axios from "axios";
-import DetailedInfo from "./components/DetailedInfo";
 import Forecast from './components/Forecast'
-import SavedCities from "./components/SavedCities";
+import DetailedInfo from "./components/DetailedInfo";
+import ApplicationBar from './components/ApplicationBar';
 import CurrentWeather from "./components/CurrentWeather";
-import { Button, TextField, Grid, Toolbar, Menu, MenuItem, IconButton } from "@material-ui/core";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { Row, Col } from "reactstrap";
-
+import { Grid } from "@material-ui/core";
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -21,9 +16,8 @@ const config = {
     storageBucket: "",
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
   };
-  firebase.initializeApp(config);
 
-const ITEM_HEIGHT = 45;
+firebase.initializeApp(config);
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +26,6 @@ class App extends Component {
       activeCity: 'London',
       user: null,
       forecast: [],
-      anchorEl: null
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,6 +48,8 @@ class App extends Component {
   componentDidMount() {
     this.apiRequest();
   }
+
+  // Yahoo! Weather API request function
 
   apiRequest() {
     axios.get(`https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${this.state.activeCity}%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`)
@@ -83,11 +78,7 @@ class App extends Component {
     })
   }
 
-  setUser(user) {
-    this.setState({
-      user: user
-    })
-  }
+  // Set temperature class for color combos
 
   setTemperatureClass() {
     if (this.state.temp >= 100) {
@@ -105,86 +96,46 @@ class App extends Component {
     }
   }
 
-  // Menu Open and Close
+  // User sign in with google firebase
 
-  handleClick = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
+  signIn() {
+    console.log('clickSignIn')
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup( provider ).then((result) => {
+        const user = result.user;
+        this.setState({ user });
+    });
+  }
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
+  // User sign out with google firebase
 
-  tempClass() {}
+  signOut() {
+    firebase.auth().signOut();
+    this.setState({ user: null });
+  }
+
+  // Create cookie to save information set as string -> array
+
+  // Read cookie
+  
   render() {
-    const { anchorEl } = this.state;
     return (
       <Grid container justify='center' alignItems='center' className={this.setTemperatureClass()} id='main'>
         <Grid item xs={12} md={8}>
-        {/* <AppBar className={this.setTemperatureClass()}> */}
-          <Toolbar className='menu'>
-            <IconButton
-              aria-owns={anchorEl ? 'simple-menu' : null}
-              onClick={this.handleClick}
-              aria-label="More"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <MoreVertIcon />
-            </IconButton>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={this.handleClose}
-              PaperProps={{
-                style: {
-                  maxHeight: ITEM_HEIGHT * 4.5,
-                  width: 200,
-                },
-              }}
-            >
-              <div>
-                <form>
-                  <MenuItem>
-                    <TextField 
-                      placeholder='Search Location' 
-                      type='text' 
-                      onChange={this.handleChange} 
-                      value={this.state.activeCity}
-                      label="Search Location"
-                    />
-                    <Button
-                      type='submit'
-                      onClick={ this.handleSubmit } 
-                      className='location-button'
-                    >
-                      <i className="fas fa-search"></i>
-                    </Button>
-                  </MenuItem>
-                </form>
-              </div>
-                <User 
-                  firebase={ firebase }
-                  setUser={this.setUser.bind(this)}
-                  user={this.state.user}
-                  currentUser={ this.state.user === null ? 'Guest' : this.state.user.displayName }
-                />
-              <SavedCities/>
-            </Menu>
-            <img src={mainLogo} alt='main logo' className='app-bar-logo'/>
-          </Toolbar>
-        {/* </AppBar> */}
-          <Row>
-            <Col sm="12" md={{ size: 8, offset: 2 }}>
-              <CurrentWeather 
-                city={this.state.cityName}
-                temp={this.state.temp}
-                iconId={this.state.iconId}
-                description={this.state.description}
-              />
-            </Col>
-          </Row>
+          <ApplicationBar
+            firebase={ firebase }
+            signIn={ () => this.signIn() }
+            signOut={ () => this.signOut() }
+            currentUser={ this.state.user === null ? 'Guest' : this.state.user.displayName }
+            handleChange={ this.handleChange }
+            handleSubmit={ this.handleSubmit }
+          />
+          <CurrentWeather 
+            city={this.state.cityName}
+            temp={this.state.temp}
+            iconId={this.state.iconId}
+            description={this.state.description}
+          />
           <Forecast
             forecast={this.state.forecast}
             tempClass={this.setTemperatureClass()}

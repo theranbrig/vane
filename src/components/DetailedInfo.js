@@ -33,7 +33,7 @@ class DetailedInfo extends Component {
               <TableCell className='cell-data'>{this.props.sunset}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Last Update</TableCell>
+              <TableCell>Date</TableCell>
               <TableCell className='cell-data'>{this.props.time}</TableCell>
             </TableRow>
           </TableBody>
