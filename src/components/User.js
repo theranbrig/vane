@@ -1,25 +1,7 @@
 import React, { Component } from 'react';
-import MenuItem from '@material-ui/core/MenuItem';
+import { MenuItem, Button } from '@material-ui/core';
 
 class User extends Component {
-
-  // User sign in with google firebase
-
-  signIn() {
-    console.log('clickSignIn')
-    const provider = new this.props.firebase.auth.GoogleAuthProvider();
-    this.props.firebase.auth().signInWithPopup( provider ).then((result) => {
-        const user = result.user;
-        this.setState({ user });
-    });
-  }
-
-  // User sign out with google firebase
-
-  signOut() {
-    this.props.firebase.auth().signOut();
-    this.setState({ user: null });
-  }
 
   componentDidMount () {
     this.props.firebase.auth().onAuthStateChanged(user => {
@@ -30,11 +12,14 @@ class User extends Component {
   render() {
     return (
       <div>
-        <MenuItem>{this.props.currentUser}</MenuItem>
         { this.props.user === null ? (
-          <MenuItem onClick={this.signIn.bind(this)}>Sign In</MenuItem>
+          <MenuItem onClick={this.props.signIn}>
+            <Button color="primary" variant="outlined">Sign In</Button>
+          </MenuItem>
         ) : (
-          <MenuItem onClick={this.signOut.bind(this)}>Sign Out</MenuItem>
+          <MenuItem onClick={this.props.signOut}>
+            <Button color="secondary" variant="outlined">Sign Out</Button>
+          </MenuItem>
         )
         }
         
