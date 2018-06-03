@@ -9,15 +9,10 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
     "firebase": "^5.0.3",
-    "jquery": "^3.3.1",
-    "moment": "^2.22.1",
     "react": "^16.4.0",
     "react-dom": "^16.3.2",
-    "react-icons-weather": "^1.0.5",
-    "react-open-weather-icons": "^0.1.1",
     "react-scripts": "1.1.4",
-    "reactstrap": "^6.0.1",
-    "request": "^2.87.0"
+    "reactstrap": "^6.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
