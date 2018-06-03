@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControlLabel, Switch } from "@material-ui/core";
+import { FormGroup, FormControlLabel, Switch, MenuItem } from "@material-ui/core";
 
 class UnitSelector extends Component {
   render() {
     return (
-      <div>
+      <MenuItem>
         <FormGroup>
           <FormControlLabel
+            label={this.props.units.toUpperCase()}
             control={
               <Switch 
                 aria-label="LoginSwitch" 
                 onChange={ this.props.handleUnits }
               />
             }
-            label={this.props.units.toUpperCase()}
+            
           />
         </FormGroup>
-      </div>
+      </MenuItem>
     );
   }
 }

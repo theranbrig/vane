@@ -65,10 +65,6 @@ class ApplicationBar extends Component {
               handleChange={this.props.handleChange}
               activeCity={this.state.activeCity}
             />
-            <UnitSelector
-              handleUnits={ this.props.handleUnits }
-              units={ this.props.units }
-            />
             <MenuItem>{this.props.currentUser}</MenuItem>
             <SavedCities/>
             <User 
@@ -77,6 +73,10 @@ class ApplicationBar extends Component {
               signIn={ this.props.signIn }
               signOut={ this.props.signOut }
               user={ this.state.user }
+            />
+            <UnitSelector
+              handleUnits={ this.props.handleUnits }
+              units={ this.props.units }
             />
           </Menu>
           <img src={mainLogo} alt='main logo' className='app-bar-logo'/>

@@ -81,19 +81,28 @@ class App extends Component {
   }
 
   // Set temperature class for color combos
+  convertTemperature() {
+  let temp = null;
+    if (this.state.temperatureUnits === 'c') {
+      return this.state.temp * 9/5 + 32
+    } else {
+      return this.state.temp
+    }
+  }
 
   setTemperatureClass() {
-    if (this.state.temp >= 100) {
+    let temp = this.convertTemperature()
+    if (temp >= 100) {
       return 'boiling'
-    } else if (this.state.temp < 100 && this.state.temp >= 85) {
+    } else if (temp < 100 && temp >= 85) {
       return 'hot'
-    } else if (this.state.temp < 85 && this.state.temp >= 65) {
+    } else if (temp < 85 && temp >= 65) {
       return 'warm'
-    } else if (this.state.temp < 65 && this.state.temp >= 50) {
+    } else if (temp < 65 && temp >= 50) {
       return 'perfect'
-    } else if (this.state.temp < 50 && this.state.temp >= 32) {
+    } else if (temp < 50 && temp >= 32) {
       return 'cool'
-    } else if (this.state.temp < 32) {
+    } else if (temp < 32) {
       return 'freezing'
     }
   }
@@ -117,10 +126,13 @@ class App extends Component {
   }
 
   changeUnits() {
-    this.state.temperatureUnits === 'f' ? this.setState({ temperatureUnits: 'c'} ) : this.setState({ temperatureUnits: 'f' }); 
+    this.state.temperatureUnits === 'f' ? 
+      this.setState({ temperatureUnits: 'c'} ) 
+      : 
+      this.setState({ temperatureUnits: 'f' });
     setTimeout(() => {
       this.apiRequest();
-    }, 200);
+    });
   }
 
   // Create cookie to save information set as string -> array
