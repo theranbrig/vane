@@ -62,12 +62,10 @@ class App extends Component {
         sunset: conditions.astronomy.sunset,
         windSpeed: `${conditions.wind.speed} ${conditions.units.speed}`
       })
-  });
-    this.setState({
-      anchorEl: null
-    })
+    });
   }
 
+  
   // App city search bar functions
 
   handleChange(e) {
@@ -119,8 +117,10 @@ class App extends Component {
   }
 
   changeUnits() {
-    this.state.temperatureUnits === 'f' ? this.setState({ temperatureUnits: 'c'} ) : this.setState({ temperatureUnits: 'f' });
-    this.apiRequest()
+    this.state.temperatureUnits === 'f' ? this.setState({ temperatureUnits: 'c'} ) : this.setState({ temperatureUnits: 'f' }); 
+    setTimeout(() => {
+      this.apiRequest();
+    }, 200);
   }
 
   // Create cookie to save information set as string -> array
@@ -138,7 +138,6 @@ class App extends Component {
             handleChange={ this.handleChange }
             handleSubmit={ this.handleSubmit }
             handleUnits={ () => this.changeUnits() }
-            changeUnits={ () => this.apiRequest() }
             units={this.state.temperatureUnits}
           />
           <CurrentWeather
