@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import SavedCities from './SavedCities';
 import User from "./User"
-import { Button, TextField, Toolbar, Menu, MenuItem, IconButton } from "@material-ui/core";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import SavedCities from './SavedCities';
+import SearchField from './SearchField';
 import mainLogo from "./../assets/Untitled-1.png";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { Toolbar, Menu, MenuItem, IconButton } from "@material-ui/core";
+import UnitSelector from './UnitSelector';
 
 const ITEM_HEIGHT = 45;
 
@@ -48,9 +50,9 @@ class ApplicationBar extends Component {
           </IconButton>
           <Menu
             id="simple-menu"
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={this.handleClose}
+            anchorEl={ anchorEl }
+            open={ Boolean(anchorEl) }
+            onClose={ this.handleClose }
             PaperProps={{
               style: {
                 maxHeight: ITEM_HEIGHT * 4.5,
@@ -58,24 +60,11 @@ class ApplicationBar extends Component {
               },
             }}
           >
-            <form>
-              <MenuItem>
-                <TextField 
-                  placeholder='Search Location' 
-                  type='text' 
-                  onChange={this.props.handleChange} 
-                  value={this.state.activeCity}
-                  label="Search Location"
-                />
-                <Button
-                  type='submit'
-                  onClick={ this.props.handleSubmit } 
-                  className='location-button'
-                >
-                  <i className="fas fa-search"></i>
-                </Button>
-              </MenuItem>
-            </form>
+            <SearchField
+              handleSubmit={this.props.handleSubmit}
+              handleChange={this.props.handleChange}
+              activeCity={this.state.activeCity}
+            />
             <MenuItem>{this.props.currentUser}</MenuItem>
             <SavedCities/>
             <User 
@@ -87,6 +76,10 @@ class ApplicationBar extends Component {
             />
           </Menu>
           <img src={mainLogo} alt='main logo' className='app-bar-logo'/>
+          <UnitSelector
+            handleUnits={ this.props.handleUnits }
+            units={ this.props.units }
+          />
         </Toolbar>
       </div>
     );

@@ -24,27 +24,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeCity: 'London',
+      activeCity: 'Seoul',
       user: null,
       forecast: [],
+      temperatureUnits: 'c'
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // App city search bar functions
-
-  handleChange(e) {
-    e.preventDefault();
-    this.setState({
-      activeCity: e.target.value,
-    });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.apiRequest();
-  }
+  // Mount original city
 
   componentDidMount() {
     this.apiRequest();
@@ -53,7 +42,8 @@ class App extends Component {
   // Yahoo! Weather API request function
 
   apiRequest() {
-    axios.get(`https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${this.state.activeCity}%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`)
+    const locationUrl = `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20u%3D'${this.state.temperatureUnits}'%20and%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${this.state.activeCity}%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
+    axios.get(locationUrl)
     .then(result => {
       console.log(result.data.query.results.channel);
       const conditions = result.data.query.results.channel;
@@ -74,9 +64,22 @@ class App extends Component {
       })
   });
     this.setState({
-      activeCity: '',
       anchorEl: null
     })
+  }
+
+  // App city search bar functions
+
+  handleChange(e) {
+    e.preventDefault();
+    this.setState({
+      activeCity: e.target.value,
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.apiRequest();
   }
 
   // Set temperature class for color combos
@@ -97,7 +100,7 @@ class App extends Component {
     }
   }
 
-  // User sign in with google firebase
+  // User sign in with Google Firebase
 
   signIn() {
     console.log('clickSignIn')
@@ -115,12 +118,17 @@ class App extends Component {
     this.setState({ user: null });
   }
 
+  changeUnits() {
+    this.state.temperatureUnits === 'f' ? this.setState({ temperatureUnits: 'c'} ) : this.setState({ temperatureUnits: 'f' });
+    this.apiRequest()
+  }
+
   // Create cookie to save information set as string -> array
   // Read cookie
 
   render() {
     return (
-      <Grid container justify='center' alignItems='center' className={this.setTemperatureClass()} id='main'>
+      <Grid container justify='center' alignItems='center' className={ this.setTemperatureClass() } id='main'>
         <Grid item xs={12} md={8}>
           <ApplicationBar
             firebase={ firebase }
@@ -129,6 +137,9 @@ class App extends Component {
             currentUser={ this.state.user === null ? 'Guest' : this.state.user.displayName }
             handleChange={ this.handleChange }
             handleSubmit={ this.handleSubmit }
+            handleUnits={ () => this.changeUnits() }
+            changeUnits={ () => this.apiRequest() }
+            units={this.state.temperatureUnits}
           />
           <CurrentWeather
             city={ this.state.cityName }

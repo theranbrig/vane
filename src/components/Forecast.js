@@ -9,13 +9,9 @@ class Forecast extends Component {
     }
   }
 
-  setForecastClass() {
-    return `${this.props.tempClass}-forecast`
-  }
-
   render() {
     return (
-      <div className={`forecast ${this.setForecastClass()}`}>
+      <div className={ `forecast ${ `${ this.props.tempClass }-forecast` }` }>
         <div className='horiz-menu'>
           <Toolbar>
             <Tabs
@@ -24,7 +20,7 @@ class Forecast extends Component {
               className='forecast-area'
             >
               {
-                this.props.forecast.map( (day, index) => 
+                this.props.forecast.map( ( day, index ) => 
                   <ListItem key={ index } className='forecast-cell'>
                     <h5>{ day.day }</h5>
                     <i className={`wi wi-yahoo-${ day.code }`}></i>
