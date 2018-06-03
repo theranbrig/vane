@@ -25,10 +25,11 @@ class Forecast extends Component {
             >
               {
                 this.props.forecast.map( (day, index) => 
-                  <ListItem key={index} className='forecast-cell'>
-                    <h5>{day.day}</h5>
-                    <i className={`wi wi-yahoo-${day.code}`}></i>
-                    <p>H <strong className='temp-text'>{day.high}&deg;</strong> - L <strong className='temp-text'>{day.low}&deg;</strong></p>
+                  <ListItem key={ index } className='forecast-cell'>
+                    <h5>{ day.day }</h5>
+                    <i className={`wi wi-yahoo-${ day.code }`}></i>
+                    <p>H <strong className='temp-text'>{ day.high }&deg;</strong>
+                     - L <strong className='temp-text'>{ day.low }&deg;</strong></p>
                   </ListItem>
                 )
               }
