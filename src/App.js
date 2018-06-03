@@ -69,7 +69,7 @@ class App extends Component {
         low: conditions.item.forecast[0].low,
         sunrise: conditions.astronomy.sunrise,
         sunset: conditions.astronomy.sunset,
-        windspeed: `${conditions.wind.speed} ${conditions.units.speed}`
+        windSpeed: `${conditions.wind.speed} ${conditions.units.speed}`
       })
   });
     this.setState({
@@ -131,23 +131,23 @@ class App extends Component {
             handleSubmit={ this.handleSubmit }
           />
           <CurrentWeather 
-            city={this.state.cityName}
-            temp={this.state.temp}
-            iconId={this.state.iconId}
-            description={this.state.description}
+            city={ this.state.cityName }
+            temp={ this.state.temp }
+            iconId={ this.state.iconId }
+            description={ this.state.description }
           />
           <Forecast
-            forecast={this.state.forecast}
-            tempClass={this.setTemperatureClass()}
+            forecast={ this.state.forecast }
+            tempClass={ this.setTemperatureClass() }
           />
           <DetailedInfo
-            high={this.state.high}
-            low={this.state.low}
-            sunrise={this.state.sunrise}
-            sunset={this.state.sunset}
-            windspeed={this.state.windspeed}
-            humidity={this.state.humidity}
-            time={this.state.time}
+            high={ this.state.high }
+            low={ this.state.low }
+            sunrise={ this.state.sunrise }
+            sunset={ this.state.sunset }
+            windSpeed={ this.state.windSpeed }
+            humidity={ this.state.humidity }
+            time={ this.state.time }
           />
         </Grid>
       </Grid>

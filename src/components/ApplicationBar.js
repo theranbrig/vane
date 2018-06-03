@@ -58,35 +58,33 @@ class ApplicationBar extends Component {
               },
             }}
           >
-            <div>
-              <form>
-                <MenuItem>
-                  <TextField 
-                    placeholder='Search Location' 
-                    type='text' 
-                    onChange={this.props.handleChange} 
-                    value={this.state.activeCity}
-                    label="Search Location"
-                  />
-                  <Button
-                    type='submit'
-                    onClick={ this.props.handleSubmit } 
-                    className='location-button'
-                  >
-                    <i className="fas fa-search"></i>
-                  </Button>
-                </MenuItem>
-              </form>
-            </div>
-              <MenuItem>{this.props.currentUser}</MenuItem>
-              <SavedCities/>
-              <User 
-                firebase={ this.props.firebase }
-                setUser={ this.setUser.bind(this) }
-                signIn={ this.props.signIn }
-                signOut={ this.props.signOut }
-                user={ this.state.user }
-              />
+            <form>
+              <MenuItem>
+                <TextField 
+                  placeholder='Search Location' 
+                  type='text' 
+                  onChange={this.props.handleChange} 
+                  value={this.state.activeCity}
+                  label="Search Location"
+                />
+                <Button
+                  type='submit'
+                  onClick={ this.props.handleSubmit } 
+                  className='location-button'
+                >
+                  <i className="fas fa-search"></i>
+                </Button>
+              </MenuItem>
+            </form>
+            <MenuItem>{this.props.currentUser}</MenuItem>
+            <SavedCities/>
+            <User 
+              firebase={ this.props.firebase }
+              setUser={ this.setUser.bind(this) }
+              signIn={ this.props.signIn }
+              signOut={ this.props.signOut }
+              user={ this.state.user }
+            />
           </Menu>
           <img src={mainLogo} alt='main logo' className='app-bar-logo'/>
         </Toolbar>
