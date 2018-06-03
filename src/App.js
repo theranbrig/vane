@@ -133,7 +133,7 @@ class App extends Component {
       : 
       this.setState({ temperatureUnits: 'f' });
       this.apiRequest();
-    });
+    }, 50);
   }
 
   // Create cookie to save information set as string -> array
