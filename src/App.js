@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import * as firebase from 'firebase';
 import axios from "axios";
+import * as firebase from 'firebase';
+import { Grid } from "@material-ui/core";
 import Forecast from './components/Forecast'
 import DetailedInfo from "./components/DetailedInfo";
 import ApplicationBar from './components/ApplicationBar';
 import CurrentWeather from "./components/CurrentWeather";
-import { Grid } from "@material-ui/core";
+
 
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -30,7 +31,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
   // App city search bar functions
 
   handleChange(e) {
@@ -115,9 +116,8 @@ class App extends Component {
   }
 
   // Create cookie to save information set as string -> array
-
   // Read cookie
-  
+
   render() {
     return (
       <Grid container justify='center' alignItems='center' className={this.setTemperatureClass()} id='main'>
@@ -130,7 +130,7 @@ class App extends Component {
             handleChange={ this.handleChange }
             handleSubmit={ this.handleSubmit }
           />
-          <CurrentWeather 
+          <CurrentWeather
             city={ this.state.cityName }
             temp={ this.state.temp }
             iconId={ this.state.iconId }
