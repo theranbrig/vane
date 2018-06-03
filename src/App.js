@@ -81,8 +81,8 @@ class App extends Component {
   }
 
   // Set temperature class for color combos
+  
   convertTemperature() {
-  let temp = null;
     if (this.state.temperatureUnits === 'c') {
       return this.state.temp * 9/5 + 32
     } else {
@@ -125,12 +125,13 @@ class App extends Component {
     this.setState({ user: null });
   }
 
+  // Toggle Celsius and Fahrenheit
   changeUnits() {
-    this.state.temperatureUnits === 'f' ? 
+    setTimeout(() => {
+      this.state.temperatureUnits === 'f' ? 
       this.setState({ temperatureUnits: 'c'} ) 
       : 
       this.setState({ temperatureUnits: 'f' });
-    setTimeout(() => {
       this.apiRequest();
     });
   }
@@ -150,7 +151,7 @@ class App extends Component {
             handleChange={ this.handleChange }
             handleSubmit={ this.handleSubmit }
             handleUnits={ () => this.changeUnits() }
-            units={this.state.temperatureUnits}
+            units={ this.state.temperatureUnits }
           />
           <CurrentWeather
             city={ this.state.cityName }
