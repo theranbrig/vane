@@ -10,8 +10,7 @@ class UnitSelector extends Component {
             control={
               <Switch 
                 aria-label="LoginSwitch" 
-                color="primary"
-                onClick={ this.props.handleUnits }
+                onChange={ this.props.handleUnits }
               />
             }
             label={this.props.units.toUpperCase()}
