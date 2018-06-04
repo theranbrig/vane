@@ -14,11 +14,15 @@ class User extends Component {
       <div>
         { this.props.user === null ? (
             <MenuItem onClick={ this.props.signIn }>
-              <Button color="primary" variant="outlined">Sign In</Button>
+              <Button color="primary" variant="outlined">
+                Sign In
+              </Button>
             </MenuItem>
           ) : (
             <MenuItem onClick={ this.props.signOut }>
-              <Button color="secondary" variant="outlined">Sign Out</Button>
+              <Button color="secondary" variant="outlined">
+                Sign Out
+              </Button>
             </MenuItem>
           )
         }

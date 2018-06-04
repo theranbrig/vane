@@ -24,7 +24,7 @@ class ApplicationBar extends Component {
     })
   }
 
-  // Menu Open and Close
+  // Menu open and close functions
 
   handleOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -40,8 +40,8 @@ class ApplicationBar extends Component {
       <div>
         <Toolbar className='menu'>
           <IconButton
-            aria-owns={anchorEl ? 'simple-menu' : null}
-            onClick={this.handleOpen}
+            aria-owns={ anchorEl ? 'simple-menu' : null }
+            onClick={ this.handleOpen }
             aria-label="More"
             aria-haspopup="true"
             color="inherit"
@@ -61,11 +61,11 @@ class ApplicationBar extends Component {
             }}
           >
             <SearchField
-              handleSubmit={this.props.handleSubmit}
-              handleChange={this.props.handleChange}
-              activeCity={this.state.activeCity}
+              handleSubmit={ this.props.handleSubmit }
+              handleChange={ this.props.handleChange }
+              activeCity={ this.state.activeCity }
             />
-            <MenuItem>{this.props.currentUser}</MenuItem>
+            <MenuItem>{ this.props.currentUser }</MenuItem>
             <SavedCities/>
             <User 
               firebase={ this.props.firebase }
@@ -79,7 +79,7 @@ class ApplicationBar extends Component {
               units={ this.props.units }
             />
           </Menu>
-          <img src={mainLogo} alt='main logo' className='app-bar-logo'/>
+          <img src={ mainLogo } alt='main logo' className='app-bar-logo'/>
         </Toolbar>
       </div>
     );
