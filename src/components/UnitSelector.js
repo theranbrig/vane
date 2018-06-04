@@ -7,14 +7,13 @@ class UnitSelector extends Component {
       <MenuItem>
         <FormGroup>
           <FormControlLabel
-            label={this.props.units.toUpperCase()}
+            label={ this.props.units.toUpperCase() }
             control={
               <Switch 
                 aria-label="LoginSwitch" 
                 onChange={ this.props.handleUnits }
               />
-            }
-            
+            } 
           />
         </FormGroup>
       </MenuItem>

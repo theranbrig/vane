@@ -39,7 +39,7 @@ class App extends Component {
     this.apiRequest();
   }
 
-  // Yahoo! Weather API request function
+  // Yahoo! Weather API request
 
   apiRequest() {
     const locationUrl = `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20u%3D'${this.state.temperatureUnits}'%20and%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${this.state.activeCity}%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
@@ -65,7 +65,6 @@ class App extends Component {
     });
   }
 
-  
   // App city search bar functions
 
   handleChange(e) {
@@ -133,7 +132,7 @@ class App extends Component {
       : 
       this.setState({ temperatureUnits: 'f' });
       this.apiRequest();
-    }, 50);
+    });
   }
 
   // Create cookie to save information set as string -> array
