@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import User from "./User"
 import SavedCities from './SavedCities';
 import SearchField from './SearchField';
+import UnitSelector from './UnitSelector';
 import mainLogo from "./../assets/Untitled-1.png";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Toolbar, Menu, MenuItem, IconButton } from "@material-ui/core";
-import UnitSelector from './UnitSelector';
+
 
 const ITEM_HEIGHT = 45;
 
