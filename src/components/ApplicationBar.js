@@ -52,7 +52,7 @@ class ApplicationBar extends Component {
           <Menu
             id="simple-menu"
             anchorEl={ anchorEl }
-            open={ Boolean(anchorEl) }
+            open={ Boolean(anchorEl) } 
             onClose={ this.handleClose }
             PaperProps={{
               style: {
