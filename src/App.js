@@ -16,6 +16,7 @@ const config = {
     projectId: "weather-app-8bad1",
     storageBucket: "",
     messagingSenderId: "924881745386"
+    
   };
 
 firebase.initializeApp(config);
@@ -27,7 +28,8 @@ class App extends Component {
       activeCity: 'Seoul',
       user: null,
       forecast: [],
-      temperatureUnits: 'c'
+      temperatureUnits: 'c',
+      temperatureClass: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -62,7 +64,9 @@ class App extends Component {
         sunset: conditions.astronomy.sunset,
         windSpeed: `${conditions.wind.speed} ${conditions.units.speed}`
       })
+      this.setTemperatureClass();
     });
+    
   }
 
   // App city search bar functions
@@ -92,17 +96,29 @@ class App extends Component {
   setTemperatureClass() {
     let temp = this.convertTemperature()
     if (temp >= 100) {
-      return 'boiling'
+      this.setState({
+        temperatureClass: 'boiling'
+      }) 
     } else if (temp < 100 && temp >= 85) {
-      return 'hot'
+      this.setState({
+        temperatureClass: 'hot'
+      }) 
     } else if (temp < 85 && temp >= 65) {
-      return 'warm'
+      this.setState({
+        temperatureClass: 'warm'
+      }) 
     } else if (temp < 65 && temp >= 50) {
-      return 'perfect'
+      this.setState({
+        temperatureClass: 'perfect'
+      }) 
     } else if (temp < 50 && temp >= 32) {
-      return 'cool'
+      this.setState({
+        temperatureClass: 'cool'
+      }) 
     } else if (temp < 32) {
-      return 'freezing'
+      this.setState({
+        temperatureClass: 'freezing'
+      }) 
     }
   }
 
@@ -133,6 +149,7 @@ class App extends Component {
       this.setState({ temperatureUnits: 'f' });
       this.apiRequest();
     });
+      
   }
 
   // Create cookie to save information set as string -> array
@@ -140,7 +157,7 @@ class App extends Component {
 
   render() {
     return (
-      <Grid container justify='center' alignItems='center' className={ this.setTemperatureClass() } id='main'>
+      <Grid container justify='center' alignItems='center' className={ this.state.temperatureClass } id='main'>
         <Grid item xs={12} md={8}>
           <ApplicationBar
             firebase={ firebase }
@@ -160,7 +177,7 @@ class App extends Component {
           />
           <Forecast
             forecast={ this.state.forecast }
-            tempClass={ this.setTemperatureClass() }
+            tempClass={ this.state.temperatureClass }
           />
           <DetailedInfo
             high={ this.state.high }
