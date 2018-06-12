@@ -3,7 +3,7 @@ import User from "./User"
 import SavedCities from './SavedCities';
 import SearchField from './SearchField';
 import UnitSelector from './UnitSelector';
-import mainLogo from "./../assets/Untitled-1.png";
+import mainLogo from "../../assets/Untitled-1.png";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Toolbar, Menu, MenuItem, IconButton } from "@material-ui/core";
 
