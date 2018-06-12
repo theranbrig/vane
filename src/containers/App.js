@@ -3,11 +3,10 @@ import './App.css';
 import axios from "axios";
 import * as firebase from 'firebase';
 import { Grid } from "@material-ui/core";
-import Forecast from './components/Forecast'
-import DetailedInfo from "./components/DetailedInfo";
-import ApplicationBar from './components/ApplicationBar';
-import CurrentWeather from "./components/CurrentWeather";
-
+import Forecast from '../components/MainPage/Forecast'
+import DetailedInfo from "../components/MainPage/DetailedInfo";
+import ApplicationBar from '../components/AppBar/AppBar';
+import CurrentWeather from "../components/MainPage/CurrentWeather";
 
 const config = {
     apiKey: "AIzaSyAtymcvGVEattiDOSILXkveeABDWpsO40o",
