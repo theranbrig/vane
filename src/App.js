@@ -16,7 +16,6 @@ const config = {
     projectId: "weather-app-8bad1",
     storageBucket: "",
     messagingSenderId: "924881745386"
-    
   };
 
 firebase.initializeApp(config);
@@ -148,9 +147,9 @@ class App extends Component {
       : 
       this.setState({ temperatureUnits: 'f' });
       this.apiRequest();
-    });
-      
+    });   
   }
+
 
   // Create cookie to save information set as string -> array
   // Read cookie
