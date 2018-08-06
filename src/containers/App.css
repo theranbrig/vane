@@ -5,7 +5,7 @@
 
 body {
 	font-family: 'Raleway', sans-serif;
-	color: gainsboro;
+	color: whitesmoke;
 	text-align: center;
 	width: 100%;
 }
@@ -21,7 +21,7 @@ body {
 }
 
 .big-data h2 {
-	border-left: 1px solid gainsboro;
+	border-left: 1px solid whitesmoke;
 	border-radius: 0;
 }
 
@@ -156,7 +156,7 @@ body {
 }
 
 .weather-details > tbody > tr > td {
-	color: gainsboro !important;
+	color: whitesmoke !important;
 	font-size: 1.2em;
 	font-weight: 300;
 }
