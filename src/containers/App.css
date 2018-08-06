@@ -1,166 +1,166 @@
 .App {
-    text-align: center;
-    margin: 0 auto;
+	text-align: center;
+	margin: 0 auto;
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
-    color: whitesmoke;
-    text-align: center;
-    width: 100%;
+	font-family: 'Raleway', sans-serif;
+	color: gainsboro;
+	text-align: center;
+	width: 100%;
 }
 
 /* Current Weather Styling */
 .main-icon,
 .big-data h2 {
-    font-size: 6em;
-    border-radius: 50%;
-    padding: 20px;
-    margin: 20px 0 20px 0;
-    display: inline-block;
+	font-size: 6em;
+	border-radius: 50%;
+	padding: 20px;
+	margin: 20px 0 20px 0;
+	display: inline-block;
 }
 
 .big-data h2 {
-    border-left: 1px solid white;
-    border-radius: 0;
+	border-left: 1px solid gainsboro;
+	border-radius: 0;
 }
 
 .big-data h2,
 .main-city,
 .main-description {
-    font-weight: 100;
+	font-weight: 100;
 }
 
 .main-description {
-    font-size: 2.5em;
+	font-size: 2.5em;
 }
 
 .main-city {
-    font-size: 2em;
+	font-size: 2em;
 }
 
 /* Color Styling Main Section */
 
 .boiling {
-    background: rgb(158, 43, 14);
+	background: rgb(158, 43, 14);
 }
 
 .hot {
-    background: rgb(198, 106, 44);
+	background: rgb(210, 106, 44);
 }
 
 .warm {
-    background: rgb(242, 190, 117);
+	background: rgb(242, 190, 117);
 }
 
 .perfect {
-    background: rgb(186, 203, 161);
+	background: rgb(186, 203, 161);
 }
 
 .cool {
-    background: rgb(87, 143, 161);
+	background: rgb(87, 143, 161);
 }
 
 .freezing {
-    background: rgb(31, 75, 153);
+	background: rgb(31, 75, 153);
 }
 
 /* Color Styling Forecast Section */
 
 .boiling-forecast {
-    background: rgb(240, 121, 91);
+	background: rgb(240, 121, 91);
 }
 
 .hot-forecast {
-    background: rgb(223, 155, 109);
+	background: rgb(238, 155, 109);
 }
 
 .warm-forecast {
-    background: rgb(244, 200, 138);
+	background: rgb(244, 200, 138);
 }
 
 .perfect-forecast {
-    background: rgba(195, 210, 178, 0.85);
+	background: rgba(195, 210, 178, 0.85);
 }
 
 .cool-forecast {
-    background: rgb(139, 179, 192);
+	background: rgb(139, 179, 192);
 }
 
 .freezing-forecast {
-    background: rgb(149, 179, 234);
+	background: rgb(149, 179, 234);
 }
 
 /* Forecast Area Styling */
 
 .horiz-menu {
-    height: 150px;
-    margin: 0 auto;
+	height: 150px;
+	margin: 0 auto;
 }
 
 .forecast-cell {
-    height: 150px;
-    display: block !important;
-    padding: 4 10px !important;
-    text-align: center !important;
+	height: 150px;
+	display: block !important;
+	padding: 4 10px !important;
+	text-align: center !important;
 }
 
 .forecast-area {
-    width: 100%;
+	width: 100%;
 }
 
-.forecast-cell>i {
-    font-size: 3em;
-    padding: 15px 0;
+.forecast-cell > i {
+	font-size: 3em;
+	padding: 15px 0;
 }
 
-.forecast-cell>p {
-    font-size: 0.7em;
-    margin: 0;
+.forecast-cell > p {
+	font-size: 0.7em;
+	margin: 0;
 }
 
 .temp-text {
-    font-size: 1.5em;
+	font-size: 1.5em;
 }
 
 .forecast-cell h5 {
-    display: block;
-    margin: 0;
+	display: block;
+	margin: 0;
 }
 
 /* Menu Bar Styling */
 
 .app-bar-logo {
-    width: 45px;
-    height: 30px;
-    margin-left: -5px;
+	width: 45px;
+	height: 30px;
+	margin-left: -5px;
 }
 
 .menu {
-    padding: 0 !important;
-    font-family: 'Raleway', sans-serif !important;
+	padding: 0 !important;
+	font-family: 'Raleway', sans-serif !important;
 }
 
 /* Menu Font */
 
 .location-button {
-    min-width: 25% !important;
+	min-width: 25% !important;
 }
 
 .cell-data {
-    text-align: right !important;
+	text-align: right !important;
 }
 
 .weather-details {
-    font-family: 'Raleway', sans-serif !important;
+	font-family: 'Raleway', sans-serif !important;
 }
 
-.weather-details>tbody>tr>td {
-    color: whitesmoke !important;
-    font-size: 1.2em;
-    font-weight: 300;
+.weather-details > tbody > tr > td {
+	color: gainsboro !important;
+	font-size: 1.2em;
+	font-weight: 300;
 }
 
 .whole-details-area {
-    padding: 20px 2% 50px;
+	padding: 20px 2% 50px;
 }
