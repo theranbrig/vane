@@ -28,7 +28,7 @@ body {
 .big-data h2,
 .main-city,
 .main-description {
-	font-weight: 100;
+	font-weight: 300;
 }
 
 .main-description {
@@ -50,7 +50,7 @@ body {
 }
 
 .warm {
-	background: rgb(242, 190, 117);
+	background: rgb(238, 172, 80);
 }
 
 .perfect {
@@ -76,7 +76,7 @@ body {
 }
 
 .warm-forecast {
-	background: rgb(244, 200, 138);
+	background: rgb(247, 194, 120);
 }
 
 .perfect-forecast {
@@ -158,7 +158,6 @@ body {
 .weather-details > tbody > tr > td {
 	color: whitesmoke !important;
 	font-size: 1.2em;
-	font-weight: 300;
 }
 
 .whole-details-area {

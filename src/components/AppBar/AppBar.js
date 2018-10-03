@@ -5,7 +5,8 @@ import SearchField from './SearchField';
 import UnitSelector from './UnitSelector';
 import mainLogo from '../../assets/Untitled-1.png';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Toolbar, Menu, MenuItem, IconButton } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import { Toolbar, Menu, MenuItem, IconButton, Button } from '@material-ui/core';
 
 const ITEM_HEIGHT = 45;
 
@@ -44,8 +45,7 @@ class ApplicationBar extends Component {
 						onClick={this.handleOpen}
 						aria-label="More"
 						aria-haspopup="true"
-						color="inherit"
-					>
+						color="inherit">
 						<MoreVertIcon />
 					</IconButton>
 					<Menu
@@ -58,14 +58,18 @@ class ApplicationBar extends Component {
 								maxHeight: ITEM_HEIGHT * 4.5,
 								width: 200
 							}
-						}}
-					>
+						}}>
 						<SearchField
 							handleSubmit={this.props.handleSubmit}
 							handleChange={this.props.handleChange}
 							activeCity={this.state.activeCity}
 						/>
 						<MenuItem>{this.props.currentUser}</MenuItem>
+						<SavedCities
+							savedCities={this.props.savedCities}
+							user={this.props.currentUser}
+							apiSearch={this.props.apiSearch}
+						/>
 						<User
 							firebase={this.props.firebase}
 							setUser={this.setUser.bind(this)}
@@ -73,12 +77,12 @@ class ApplicationBar extends Component {
 							signOut={this.props.signOut}
 							user={this.state.user}
 						/>
-						<UnitSelector
-							handleUnits={this.props.handleUnits}
-							units={this.props.units}
-						/>
+						<UnitSelector handleUnits={this.props.handleUnits} units={this.props.units} />
 					</Menu>
 					<img src={mainLogo} alt="main logo" className="app-bar-logo" />
+					<Button color="primary" aria-label="Add" onClick={this.props.addCity}>
+						<AddIcon />
+					</Button>
 				</Toolbar>
 			</div>
 		);
