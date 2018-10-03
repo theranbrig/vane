@@ -155,11 +155,12 @@ class App extends Component {
 			this.state.temperatureUnits === 'f'
 				? this.setState({ temperatureUnits: 'c' })
 				: this.setState({ temperatureUnits: 'f' });
-			this.apiRequest();
+			this.apiRequest(this.state.activeCity);
 		});
 	}
 
-	// Add City to Database
+	// Add city to database
+
 	handleAddCity(e) {
 		e.preventDefault();
 		if (this.state.user != null) {
@@ -170,6 +171,8 @@ class App extends Component {
 		}
 		this.handleSavedCities();
 	}
+
+	// Get saved cities for each user
 
 	handleSavedCities() {
 		this.citiesRef.on('value', data => {

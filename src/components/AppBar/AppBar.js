@@ -3,7 +3,7 @@ import User from './User';
 import SavedCities from './SavedCities';
 import SearchField from './SearchField';
 import UnitSelector from './UnitSelector';
-import mainLogo from '../../assets/Untitled-1.png';
+import mainLogo from '../../assets/logo.jpg';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AddIcon from '@material-ui/icons/Add';
 import { Toolbar, Menu, MenuItem, IconButton, Button } from '@material-ui/core';
@@ -80,7 +80,11 @@ class ApplicationBar extends Component {
 						<UnitSelector handleUnits={this.props.handleUnits} units={this.props.units} />
 					</Menu>
 					<img src={mainLogo} alt="main logo" className="app-bar-logo" />
-					<Button color="primary" aria-label="Add" className="add-button" onClick={this.props.addCity}>
+					<Button
+						color="primary"
+						aria-label="Add"
+						className="add-button"
+						onClick={this.props.addCity}>
 						<AddIcon />
 					</Button>
 				</Toolbar>
