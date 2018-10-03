@@ -137,10 +137,9 @@ body {
 /* Menu Bar Styling */
 
 .app-bar-logo {
-	width: 45px;
-	height: 45px;
+	width: 70px;
+	height: 70px;
 	margin-left: -5px;
-	padding-left: 10px;
 }
 
 .menu {
