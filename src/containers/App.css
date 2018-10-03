@@ -5,7 +5,7 @@
 
 body {
 	font-family: 'Raleway', sans-serif;
-	color: whitesmoke;
+	color: #2d3436;
 	text-align: center;
 	width: 100%;
 }
@@ -22,7 +22,7 @@ body {
 }
 
 .big-data h2 {
-	border-left: 1px solid whitesmoke;
+	border-left: 1px solid #2d3436;
 	border-radius: 0;
 }
 
@@ -47,53 +47,53 @@ body {
 /* Color Styling Main Section */
 
 .boiling {
-	background: rgb(158, 43, 14);
+	background: #ff7675;
 }
 
 .hot {
-	background: rgb(210, 106, 44);
+	background: #fab1a0;
 }
 
 .warm {
-	background: rgb(238, 172, 80);
+	background: #ffeaa7;
 }
 
 .perfect {
-	background: rgb(186, 203, 161);
+	background: #55efc4;
 }
 
 .cool {
-	background: rgb(87, 143, 161);
+	background: #81ecec;
 }
 
 .freezing {
-	background: rgb(31, 75, 153);
+	background: #74b9ff;
 }
 
 /* Color Styling Forecast Section */
 
 .boiling-forecast {
-	background: rgb(240, 121, 91);
+	background: #d63031;
 }
 
 .hot-forecast {
-	background: rgb(238, 155, 109);
+	background: #e17055;
 }
 
 .warm-forecast {
-	background: rgb(247, 194, 120);
+	background: #fdcb6e;
 }
 
 .perfect-forecast {
-	background: rgba(195, 210, 178, 0.85);
+	background: #00b894;
 }
 
 .cool-forecast {
-	background: rgb(139, 179, 192);
+	background: #00cec9;
 }
 
 .freezing-forecast {
-	background: rgb(149, 179, 234);
+	background: #278fdf;
 }
 
 /* Forecast Area Styling */
@@ -138,8 +138,9 @@ body {
 
 .app-bar-logo {
 	width: 45px;
-	height: 30px;
+	height: 45px;
 	margin-left: -5px;
+	padding-left: 10px;
 }
 
 .menu {
@@ -163,7 +164,7 @@ body {
 }
 
 .weather-details > tbody > tr > td {
-	color: whitesmoke !important;
+	color: #2d3436 !important;
 	font-size: 1.2em;
 	letter-spacing: 0.1em;
 }
@@ -175,8 +176,7 @@ body {
 
 .whole-details-area h4 {
 	font-size: 2em;
-	margin: 0 auto;
-
+	margin: 10px auto;
 }
 
 button.add-button {
