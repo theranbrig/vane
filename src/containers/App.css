@@ -18,6 +18,7 @@ body {
 	padding: 20px;
 	margin: 20px 0 20px 0;
 	display: inline-block;
+	border-top: 20px;
 }
 
 .big-data h2 {
@@ -28,7 +29,11 @@ body {
 .big-data h2,
 .main-city,
 .main-description {
-	font-weight: 300;
+	font-weight: 400;
+}
+
+.main-content {
+	display: contents;
 }
 
 .main-description {
@@ -96,6 +101,7 @@ body {
 .horiz-menu {
 	height: 150px;
 	margin: 0 auto;
+	margin-bottom: 20px;
 }
 
 .forecast-cell {
@@ -139,6 +145,7 @@ body {
 .menu {
 	padding: 0 !important;
 	font-family: 'Raleway', sans-serif !important;
+	font-weight: 400;
 }
 
 /* Menu Font */
@@ -158,8 +165,22 @@ body {
 .weather-details > tbody > tr > td {
 	color: whitesmoke !important;
 	font-size: 1.2em;
+	letter-spacing: 0.1em;
 }
 
 .whole-details-area {
 	padding: 20px 2% 50px;
+	font-weight: 400;
+}
+
+.whole-details-area h4 {
+	font-size: 2em;
+	margin: 0 auto;
+
+}
+
+button.add-button {
+	color: navy;
+	position: absolute;
+	right: 0px;
 }

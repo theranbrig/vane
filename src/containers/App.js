@@ -181,10 +181,12 @@ class App extends Component {
 				});
 			});
 			console.log(cityList);
-			let userCities = cityList.filter(city => city.user === this.state.user.email);
-			this.setState({
-				savedCities: userCities
-			});
+			if (this.state.user != null) {
+				let userCities = cityList.filter(city => city.user === this.state.user.email);
+				this.setState({
+					savedCities: userCities
+				});
+			}
 		});
 	}
 
