@@ -80,7 +80,7 @@ class ApplicationBar extends Component {
 						<UnitSelector handleUnits={this.props.handleUnits} units={this.props.units} />
 					</Menu>
 					<img src={mainLogo} alt="main logo" className="app-bar-logo" />
-					<Button color="primary" aria-label="Add" onClick={this.props.addCity}>
+					<Button color="primary" aria-label="Add" className="add-button" onClick={this.props.addCity}>
 						<AddIcon />
 					</Button>
 				</Toolbar>
