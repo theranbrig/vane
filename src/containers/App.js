@@ -35,6 +35,7 @@ class App extends Component {
 		this.apiSearch = this.apiRequest.bind(this);
 		this.handleAddCity = this.handleAddCity.bind(this);
 		this.handleSavedCities = this.handleSavedCities.bind(this);
+		this.handleCityClick = this.handleCityClick.bind(this)
 		this.citiesRef = firebase.database().ref('cities');
 	}
 
@@ -155,8 +156,8 @@ class App extends Component {
 			this.state.temperatureUnits === 'f'
 				? this.setState({ temperatureUnits: 'c' })
 				: this.setState({ temperatureUnits: 'f' });
-			this.apiRequest(this.state.activeCity);
-		});
+				this.apiRequest(this.state.activeCity);
+			});
 	}
 
 	// Add city to database
@@ -193,6 +194,11 @@ class App extends Component {
 		});
 	}
 
+	handleCityClick(city) {
+		this.setState({activeCity: city});
+		this.apiSearch(city);
+	}
+
 	// Create cookie to save information set as string -> array
 	// Read cookie
 
@@ -216,7 +222,7 @@ class App extends Component {
 						units={this.state.temperatureUnits}
 						addCity={this.handleAddCity}
 						savedCities={this.state.savedCities}
-						apiSearch={this.apiSearch}
+						cityClick={this.handleCityClick}
 					/>
 					<CurrentWeather
 						city={this.state.cityName}
