@@ -9,7 +9,7 @@ class SavedCities extends Component {
 					<MenuItem>Login to Save Cities</MenuItem>
 				) : (
 					this.props.savedCities.map((city, index) => (
-						<MenuItem key={index} onClick={() => this.props.apiSearch(city.city)}>
+						<MenuItem key={index} onClick={() => this.props.cityClick(city.city)}>
 							{city.city}
 						</MenuItem>
 					))

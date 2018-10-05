@@ -68,7 +68,7 @@ class ApplicationBar extends Component {
 						<SavedCities
 							savedCities={this.props.savedCities}
 							user={this.props.currentUser}
-							apiSearch={this.props.apiSearch}
+							cityClick={this.props.cityClick}
 						/>
 						<User
 							firebase={this.props.firebase}
