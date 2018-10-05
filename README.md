@@ -1,9 +1,12 @@
 
 <p align="center">
-  <img src="https://i.imgur.com/wZnjsG2.png">
+  <a href="https://vane.netlify.com"><img src="https://i.imgur.com/wZnjsG2.png"></a>
 </p>
 
 # React.js Weather App
+
+Use the deployed version at: https://vane.netlify.com.
+
 ![Imgur](https://i.imgur.com/rSS6yu3.png)
 
 > [Other Weather App Screen Shots - Color Palette Samples](https://imgur.com/a/ftNS2gt)
