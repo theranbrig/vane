@@ -55,19 +55,19 @@ body {
 }
 
 .warm {
-	background: #ffeaa7;
+	background: #fce498;
 }
 
 .perfect {
-	background: #55efc4;
+	background: #6AC3A4;
 }
 
 .cool {
-	background: #81ecec;
+	background: #67C6BB;
 }
 
 .freezing {
-	background: #74b9ff;
+	background: #80bcf8;
 }
 
 /* Color Styling Forecast Section */
@@ -85,11 +85,11 @@ body {
 }
 
 .perfect-forecast {
-	background: #00b894;
+	background: #15A57A;
 }
 
 .cool-forecast {
-	background: #00cec9;
+	background: #22A39C;
 }
 
 .freezing-forecast {
