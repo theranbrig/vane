@@ -8,13 +8,15 @@ import DetailedInfo from '../components/MainPage/DetailedInfo';
 import ApplicationBar from '../components/AppBar/AppBar';
 import CurrentWeather from '../components/MainPage/CurrentWeather';
 
+require('dotenv').config();
+
 const config = {
-	apiKey: 'AIzaSyAtymcvGVEattiDOSILXkveeABDWpsO40o',
-	authDomain: 'weather-app-8bad1.firebaseapp.com',
-	databaseURL: 'https://weather-app-8bad1.firebaseio.com',
-	projectId: 'weather-app-8bad1',
+	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+	authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+	databaseURL: process.env.REACT_APP_DATABASE_URL,
+	projectId: process.env.REACT_APP_PROJECT_ID,
 	storageBucket: '',
-	messagingSenderId: '924881745386'
+	messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
 
 firebase.initializeApp(config);
@@ -35,7 +37,7 @@ class App extends Component {
 		this.apiSearch = this.apiRequest.bind(this);
 		this.handleAddCity = this.handleAddCity.bind(this);
 		this.handleSavedCities = this.handleSavedCities.bind(this);
-		this.handleCityClick = this.handleCityClick.bind(this)
+		this.handleCityClick = this.handleCityClick.bind(this);
 		this.citiesRef = firebase.database().ref('cities');
 	}
 
@@ -156,8 +158,8 @@ class App extends Component {
 			this.state.temperatureUnits === 'f'
 				? this.setState({ temperatureUnits: 'c' })
 				: this.setState({ temperatureUnits: 'f' });
-				this.apiRequest(this.state.activeCity);
-			});
+			this.apiRequest(this.state.activeCity);
+		});
 	}
 
 	// Add city to database
@@ -195,7 +197,7 @@ class App extends Component {
 	}
 
 	handleCityClick(city) {
-		this.setState({activeCity: city});
+		this.setState({ activeCity: city });
 		this.apiSearch(city);
 	}
 
