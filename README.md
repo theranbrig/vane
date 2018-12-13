@@ -41,8 +41,13 @@ Your app should now be running on [localhost:3000](http://localhost:3000/).
 * [Yahoo! Weather API](https://developer.yahoo.com/weather/?guccounter=1)
 
 
-## Contact
+## Author
 
-theran.brigowatz@gmail.com
-[theran.co](www.theran.co)
-[twitter.com/wellBuilt](www.twitter.com/wellBuilt)
+Theran Brigowatz is a Full-stack Web Developer currently out of Seoul, South Korea, but transitioning back to the US.  Check him out at the following:
+
+* [theran.co](https://www.theran.co)
+* theran.brigowatz@gmail.com
+* [twitter.com/wellBuilt](https://www.twitter.com/wellBuilt)
+* [github.com/theranbrig](https://www.github.com/theranbrig)
+
+> Made with :heart: and :coffee:.
