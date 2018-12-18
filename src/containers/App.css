@@ -59,11 +59,11 @@ body {
 }
 
 .perfect {
-	background: #6AC3A4;
+	background: #6ac3a4;
 }
 
 .cool {
-	background: #67C6BB;
+	background: #67c6bb;
 }
 
 .freezing {
@@ -85,11 +85,11 @@ body {
 }
 
 .perfect-forecast {
-	background: #15A57A;
+	background: #15a57a;
 }
 
 .cool-forecast {
-	background: #22A39C;
+	background: #22a39c;
 }
 
 .freezing-forecast {
@@ -179,7 +179,10 @@ body {
 }
 
 button.add-button {
-	color: navy;
 	position: absolute;
 	right: 0px;
+}
+
+svg.MuiSvgIcon-root-103 {
+	color: black;
 }
