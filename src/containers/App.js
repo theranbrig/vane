@@ -21,6 +21,7 @@ const config = {
 
 firebase.initializeApp(config);
 
+const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -28,7 +29,7 @@ class App extends Component {
 			activeCity: 'Seoul',
 			user: null,
 			forecast: [],
-			temperatureUnits: 'c',
+			temperatureUnits: 'metric',
 			temperatureClass: '',
 			savedCities: null
 		};
@@ -50,28 +51,36 @@ class App extends Component {
 	// Yahoo! Weather API request
 
 	apiRequest(cityName) {
-		const locationUrl = `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20u%3D'${
+		const locationUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${
 			this.state.temperatureUnits
-		}'%20and%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${cityName}%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
-		axios.get(locationUrl).then(result => {
-			console.log(result.data.query.results.channel);
-			const conditions = result.data.query.results.channel;
-			console.log(conditions.item.forecast[0]);
-			this.setState({
-				cityName: conditions.title.slice(17),
-				temp: conditions.item.condition.temp,
-				iconId: conditions.item.condition.code,
-				description: conditions.item.condition.text,
-				humidity: conditions.atmosphere.humidity,
-				time: conditions.item.forecast[0].date,
-				forecast: conditions.item.forecast,
-				high: conditions.item.forecast[0].high,
-				low: conditions.item.forecast[0].low,
-				sunrise: conditions.astronomy.sunrise,
-				sunset: conditions.astronomy.sunset,
-				windSpeed: `${conditions.wind.speed} ${conditions.units.speed}`
-			});
-			this.setTemperatureClass();
+		}&appid=${WEATHER_API_KEY}`;
+		axios
+			.get(locationUrl)
+			.then(result => {
+				const currentConditions = result.data;
+				console.log(currentConditions);
+				this.setState({
+					cityName: currentConditions.name,
+					temp: currentConditions.main.temp,
+					iconId: currentConditions.weather[0].id,
+					description: currentConditions.weather[0].main,
+					humidity: currentConditions.main.humidity,
+					time: currentConditions.dt,
+					high: currentConditions.main.temp_max,
+					low: currentConditions.main.temp_min,
+					windSpeed: `${currentConditions.wind.speed} ${
+						this.state.temperatureUnits === 'metric' ? 'm/s' : 'mph'
+					}`
+				});
+				this.setTemperatureClass();
+			})
+			.catch(err => console.log(err));
+		const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=${
+			this.state.temperatureUnits
+		}&appid=${WEATHER_API_KEY}`;
+		axios.get(forecastUrl).then(result => {
+			console.log(result);
+			this.setState({ forecast: result.data.list });
 		});
 	}
 
@@ -92,7 +101,7 @@ class App extends Component {
 	// Set temperature class for color combos
 
 	convertTemperature() {
-		if (this.state.temperatureUnits === 'c') {
+		if (this.state.temperatureUnits === 'metric') {
 			return (this.state.temp * 9) / 5 + 32;
 		} else {
 			return this.state.temp;
@@ -155,9 +164,9 @@ class App extends Component {
 	// Toggle Celsius and Fahrenheit
 	changeUnits() {
 		setTimeout(() => {
-			this.state.temperatureUnits === 'f'
-				? this.setState({ temperatureUnits: 'c' })
-				: this.setState({ temperatureUnits: 'f' });
+			this.state.temperatureUnits === 'imperial'
+				? this.setState({ temperatureUnits: 'metric' })
+				: this.setState({ temperatureUnits: 'imperial' });
 			this.apiRequest(this.state.activeCity);
 		});
 	}

@@ -6,9 +6,9 @@ class CurrentWeather extends Component {
 		return (
 			<Grid item xl={6} alignContent="center" justify="center" className="main-content">
 				<div className="big-data">
-					<i className={`wi wi-yahoo-${this.props.iconId} main-icon`} />
+					<i className={`wi wi-owm-${this.props.iconId} main-icon`} />
 					<h2>
-						{this.props.temp}
+						{Math.round(this.props.temp)}
 						&deg;
 					</h2>
 				</div>
