@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, TableRow, TableBody, TableCell } from '@material-ui/core';
 import moment from 'moment';
 
-const DetailedInfo = ({ high, low, humidity, windSpeed, time }) => (
+const DetailedInfo = ({ high, low, humidity, windSpeed, time, sunrise, sunset }) => (
 	<div className="whole-details-area">
 		<h4>Weather Details</h4>
 		<Table className="weather-details">
@@ -22,6 +22,14 @@ const DetailedInfo = ({ high, low, humidity, windSpeed, time }) => (
 				<TableRow>
 					<TableCell>Wind Speed</TableCell>
 					<TableCell className="cell-data">{windSpeed}</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>Sunrise</TableCell>
+					<TableCell className="cell-data">{moment.unix(sunrise).format('h:mA')}</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>Sunset</TableCell>
+					<TableCell className="cell-data">{moment.unix(sunset).format('h:mA')}</TableCell>
 				</TableRow>
 				<TableRow>
 					<TableCell>Date</TableCell>

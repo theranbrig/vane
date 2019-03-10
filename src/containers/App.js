@@ -68,6 +68,8 @@ class App extends Component {
 					time: currentConditions.dt,
 					high: currentConditions.main.temp_max,
 					low: currentConditions.main.temp_min,
+					sunrise: currentConditions.sys.sunrise,
+					sunset: currentConditions.sys.sunset,
 					windSpeed: `${currentConditions.wind.speed} ${
 						this.state.temperatureUnits === 'metric' ? 'm/s' : 'mph'
 					}`
@@ -195,7 +197,6 @@ class App extends Component {
 					user: city.val().user
 				});
 			});
-			console.log(cityList);
 			if (this.state.user != null) {
 				let userCities = cityList.filter(city => city.user === this.state.user.email);
 				this.setState({
