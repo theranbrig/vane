@@ -31,7 +31,8 @@ class App extends Component {
 			forecast: [],
 			temperatureUnits: 'metric',
 			temperatureClass: '',
-			savedCities: null
+			savedCities: null,
+			loading: false
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,17 +45,18 @@ class App extends Component {
 
 	// Mount original city
 
-	componentDidMount() {
-		this.apiRequest(this.state.activeCity);
+	async componentDidMount() {
+		await this.apiRequest(this.state.activeCity);
 	}
 
 	// Yahoo! Weather API request
 
-	apiRequest(cityName) {
+	async apiRequest(cityName) {
+		this.setState({ loading: true });
 		const locationUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${
 			this.state.temperatureUnits
 		}&appid=${WEATHER_API_KEY}`;
-		axios
+		await axios
 			.get(locationUrl)
 			.then(result => {
 				const currentConditions = result.data;
@@ -76,13 +78,16 @@ class App extends Component {
 				});
 				this.setTemperatureClass();
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				this.setState({ loading: false });
+				console.log(err);
+			});
 		const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=${
 			this.state.temperatureUnits
 		}&appid=${WEATHER_API_KEY}`;
 		axios.get(forecastUrl).then(result => {
 			console.log(result);
-			this.setState({ forecast: result.data.list });
+			this.setState({ forecast: result.data.list, loading: false });
 		});
 	}
 
@@ -241,6 +246,7 @@ class App extends Component {
 						temp={this.state.temp}
 						iconId={this.state.iconId}
 						description={this.state.description}
+						loading={this.state.loading}
 					/>
 					<Forecast forecast={this.state.forecast} tempClass={this.state.temperatureClass} />
 					<DetailedInfo
