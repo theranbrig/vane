@@ -11,13 +11,10 @@ import { Toolbar, Menu, MenuItem, IconButton, Button } from '@material-ui/core';
 const ITEM_HEIGHT = 45;
 
 class ApplicationBar extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			anchorEl: null,
-			user: null
-		};
-	}
+	state = {
+		anchorEl: null,
+		user: null
+	};
 
 	setUser(user) {
 		this.setState({

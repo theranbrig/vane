@@ -121,23 +121,28 @@ class App extends Component {
 			this.setState({
 				temperatureClass: 'boiling'
 			});
-		} else if (temp < 100 && temp >= 85) {
+		}
+		if (temp < 100 && temp >= 85) {
 			this.setState({
 				temperatureClass: 'hot'
 			});
-		} else if (temp < 85 && temp >= 65) {
+		}
+		if (temp < 85 && temp >= 65) {
 			this.setState({
 				temperatureClass: 'warm'
 			});
-		} else if (temp < 65 && temp >= 50) {
+		}
+		if (temp < 65 && temp >= 50) {
 			this.setState({
 				temperatureClass: 'perfect'
 			});
-		} else if (temp < 50 && temp >= 32) {
+		}
+		if (temp < 50 && temp >= 32) {
 			this.setState({
 				temperatureClass: 'cool'
 			});
-		} else if (temp < 32) {
+		}
+		if (temp < 32) {
 			this.setState({
 				temperatureClass: 'freezing'
 			});
@@ -179,7 +184,6 @@ class App extends Component {
 	}
 
 	// Add city to database
-
 	handleAddCity(e) {
 		e.preventDefault();
 		if (this.state.user != null) {
